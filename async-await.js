@@ -4,7 +4,7 @@ const posts = [
     { name: 'Post 3', title: 'Post Title 3' }
 ];
 
-const newPost = { name: 'Post 4', title: 'Post Title 4' };
+const newPost = { name: 'Yakup Kul', title: 'Post Title 4' };
 
 
 function listPosts(postsData) {
@@ -12,7 +12,8 @@ function listPosts(postsData) {
         console.log('Postlar Listeleniyor..')
 
         if (postsData) {
-            resolve('Postlar Listelendi!')
+            console.log('Post Listelendi!')
+            resolve(posts)
         } else {
             reject('Postlar Listelenemedi!')
         }
@@ -21,10 +22,11 @@ function listPosts(postsData) {
 
 function addPost(newPost) {
     return new Promise((resolve, reject) => {
-        console.log('Yeni Post Ekleniyor...')
+        console.log('Ekstra Post Ekleniyor...')
 
         if (newPost) {
-            resolve('Yeni Post Eklendi!')
+            posts.push(newPost)
+            resolve('Ekstra Post Eklendi!')
         } else {
             reject('Ekstra Post Eklenemedi!!')
         }
@@ -39,6 +41,8 @@ async function showPosts() {
 
         let addedPost = await addPost(newPost);
         console.log(addedPost);
+
+        console.log(await listPosts(true))
 
 
     } catch (error) {
